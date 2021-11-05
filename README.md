@@ -1,6 +1,4 @@
-# Investor Ninja Strategy
-
-## Investor Ninja Strategy in Crypto Investing
+# **"Investor Ninja"** Strategy in Crypto Investing
 
 > How much profit can you make in the long run by investing in certain periods?
 
