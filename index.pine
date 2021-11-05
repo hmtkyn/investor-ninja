@@ -1,0 +1,27 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © hmtkyn
+
+//@version=5
+strategy(title='Investor Ninja | by @hmtkyn', shorttitle='Investor Ninja', overlay=true, default_qty_type=strategy.cash, default_qty_value=1000, initial_capital=1000, commission_type=strategy.commission.percent, pyramiding=1000, close_entries_rule='ANY')
+
+selectSource = input(close, title='Select Source')
+
+startMinute = input.int(title='Start Minute', defval=0, minval=0, maxval=59)
+startHour = input.int(title='Start Hour', defval=0, minval=0, maxval=23)
+startDay = input.int(title='Start Day', defval=1, minval=1, maxval=31)
+startMonth = input.int(title='Start Month', defval=1, minval=1, maxval=12)
+startYear = input.int(title='Start Year', defval=2021, minval=1970, maxval=3000)
+
+endMinute = input.int(title='End Minute', defval=0, minval=0, maxval=59)
+endHour = input.int(title='End Hour', defval=0, minval=0, maxval=23)
+endDay = input.int(title='End Day', defval=4, minval=1, maxval=31)
+endMonth = input.int(title='End Month', defval=11, minval=1, maxval=12)
+endYear = input.int(title='End Year', defval=2021, minval=1970, maxval=3000)
+
+timeRange = time >= timestamp(syminfo.timezone, startYear, startMonth, startDay, startHour, startMinute) and time <= timestamp(syminfo.timezone, endYear, endMonth, endDay, endHour, endMinute)
+
+if timeRange and dayofmonth == startDay and hour == startHour and minute == startMinute and second == 0
+    strategy.entry(id='Long' + ' - ' + str.tostring(dayofmonth) + '.' + str.tostring(month) + '.' + str.tostring(year), direction=strategy.long)
+
+if time > timestamp(syminfo.timezone, endYear, endMonth, endDay, endHour - 1, endMinute) and time <= timestamp(syminfo.timezone, endYear, endMonth, endDay, endHour, endMinute)
+    strategy.close_all()
