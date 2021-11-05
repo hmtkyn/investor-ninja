@@ -1,2 +1,2 @@
-# Patience Ninja Strategy
-The Patience Ninja Strategy in Crypto Investing
+# Patient Ninja Strategy
+Patient Ninja Strategy in Crypto Investing
