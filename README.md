@@ -2,7 +2,7 @@
 
 ## Investor Ninja Strategy in Crypto Investing
 
-| How much profit can you make in the long run by investing in certain periods?
+> How much profit can you make in the long run by investing in certain periods?
 
 Here is the backward strategy that answers this question and it's called "Investor Ninja".
 
