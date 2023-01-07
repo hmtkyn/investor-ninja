@@ -1,20 +1,26 @@
 # **"Investor Ninja"** Strategy in Crypto Investing
 
-> How much profit can you make in the long run by investing in certain periods?
+### Investor Ninja Strategy in Crypto Investing
+
+##### How much profit can you make in the long run by investing in specific periods?
 
 Here is the backward strategy that answers this question and it's called "Investor Ninja".
 
-The important thing is to make regular purchases by keeping the amount in your hand constant at the closings of each month.
+The important thing is to make regular purchases by keeping the amount in your hand constant every month or every 4 weeks.
 
-This strategy has been tested on the Bitcoin / Dollar chart.
+This strategy has been tested on the Bitcoin / Dollar chart. You can test it on other instruments if you wish.
 
-Now, from January 1, 2020 to November 5, 2021, I have invested $1,000 in Bitcoin on the 1st of each month.
+Now, from January 1, 2018 to December 31, 2022, I invested $100 in Bitcoin every Friday every 4 weeks.
 
-Then at the end of 23 months, my net profit from my $23,000 investment is $67,732.
+You can observe the results yourself.
 
-If you thought that this strategy was only tested during the bull season of Cryptocurrencies, you are wrong. You can test the test rates for other time periods yourself. You will be surprised!
+You will be amazed at the difference between just buying instead of constantly Buying and Sell and selling when it comes after a long time!
 
-If you invest in investment instruments on a regular basis, you will see that you will really gain.
+If you regularly invest in investment tools, you will see that you will really profit. Please consider every investment long term.
+
+Best regards
+
+@hmtkyn
 
 ![Investor Ninja Strategy](https://tr.tradingview.com/i/rCl22iI3/ "Investor Ninja Strategy")
 
