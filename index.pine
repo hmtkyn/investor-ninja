@@ -2,26 +2,61 @@
 // © hmtkyn
 
 //@version=5
-strategy(title='Investor Ninja | by @hmtkyn', shorttitle='Investor Ninja', overlay=true, default_qty_type=strategy.cash, default_qty_value=1000, initial_capital=1000, commission_type=strategy.commission.percent, pyramiding=1000, close_entries_rule='ANY')
+strategy(title='Investor Ninja | by @hmtkyn', shorttitle='Investor Ninja | by @hmtkyn', overlay=true, default_qty_type=strategy.cash, default_qty_value=100, initial_capital=100, commission_type=strategy.commission.percent, pyramiding=1000, close_entries_rule='ANY')
 
-selectSource = input(close, title='Select Source')
+//var GroupSource = "Select a Soruce"
+//selectSource = input(hl2, title='Select Source', group=GroupSource)
 
-startMinute = input.int(title='Start Minute', defval=0, minval=0, maxval=59)
-startHour = input.int(title='Start Hour', defval=0, minval=0, maxval=23)
-startDay = input.int(title='Start Day', defval=1, minval=1, maxval=31)
-startMonth = input.int(title='Start Month', defval=1, minval=1, maxval=12)
-startYear = input.int(title='Start Year', defval=2021, minval=1970, maxval=3000)
+var GroupStart = "Date range start"
+startYear = input.int(title='Start Year', defval=2021, minval=1970, maxval=3000, group=GroupStart)
+startMonth = input.int(title='Start Month', defval=1, minval=1, maxval=12, group=GroupStart)
+startDay = input.int(title='Start Day', defval=1, minval=1, maxval=31, group=GroupStart)
+startHour = input.int(title='Start Hour', defval=11, minval=0, maxval=23, group=GroupStart)
+startMinute = input.int(title='Start Minute', defval=0, minval=0, maxval=59, group=GroupStart)
 
-endMinute = input.int(title='End Minute', defval=0, minval=0, maxval=59)
-endHour = input.int(title='End Hour', defval=0, minval=0, maxval=23)
-endDay = input.int(title='End Day', defval=4, minval=1, maxval=31)
-endMonth = input.int(title='End Month', defval=11, minval=1, maxval=12)
-endYear = input.int(title='End Year', defval=2021, minval=1970, maxval=3000)
+var GroupEnd = "Date range end"
+endYear = input.int(title='End Year', defval=2022, minval=1970, maxval=3000, group=GroupEnd)
+endMonth = input.int(title='End Month', defval=12, minval=1, maxval=12, group=GroupEnd)
+endDay = input.int(title='End Day', defval=31, minval=1, maxval=31, group=GroupEnd)
+endHour = input.int(title='End Hour', defval=11, minval=0, maxval=23, group=GroupEnd)
+endMinute = input.int(title='End Minute', defval=0, minval=0, maxval=59, group=GroupEnd)
+
+var GroupStrategy = "Strategy period"
+get_week = input.string("From week 4", "Start week", options = ["From week 1","From week 2","From week 3","From week 4"],group=GroupStrategy)
+get_range = input.string("Every 4 weeks", "Weekly range", options = ["Every 1 weeks","Every 2 weeks","Every 3 weeks","Every 4 weeks"],group=GroupStrategy)
+get_day = input.string("Friday", "Day of Week", options = ["Monday","Tuesday","Wednesday","Thursday","Friday"],group=GroupStrategy)
+
+var nth_day = 6
+var nth_week = 4
+var start_week = 4
+
+switch get_day
+    "Monday" => nth_day := 2
+    "Tuesday" => nth_day := 3
+    "Wednesday" => nth_day := 4
+    "Thursday" => nth_day := 5
+    "Friday" => nth_day := 6
+    => nth_day := 6
+
+switch get_range
+    "Every 1 weeks" => nth_week := 1
+    "Every 2 weeks" => nth_week := 2
+    "Every 3 weeks" => nth_week := 3
+    "Every 4 weeks" => nth_week := 4
+    => nth_week := 4
+
+switch get_week
+    "From week 1" => start_week := 1
+    "From week 2" => start_week := 2
+    "From week 3" => start_week := 3
+    "From week 4" => start_week := 4
+    => start_week := 4
 
 timeRange = time >= timestamp(syminfo.timezone, startYear, startMonth, startDay, startHour, startMinute) and time <= timestamp(syminfo.timezone, endYear, endMonth, endDay, endHour, endMinute)
 
-if timeRange and dayofmonth == startDay and hour == startHour and minute == startMinute and second == 0
-    strategy.entry(id='Long' + ' - ' + str.tostring(dayofmonth) + '.' + str.tostring(month) + '.' + str.tostring(year), direction=strategy.long)
+for i = 1 to 52
+    if timeRange and weekofyear == ((i-1)*nth_week)+start_week and dayofweek == nth_day
+        strategy.entry(id='Long' + ' - ' + str.tostring(dayofmonth) + '.' + str.tostring(month) + '.' + str.tostring(year), direction=strategy.long)
 
-if time > timestamp(syminfo.timezone, endYear, endMonth, endDay, endHour - 1, endMinute) and time <= timestamp(syminfo.timezone, endYear, endMonth, endDay, endHour, endMinute)
+if time > timestamp(syminfo.timezone, endYear, endMonth, endDay,endHour,endMinute) and dayofweek >= 2
     strategy.close_all()
