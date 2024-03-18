@@ -22,6 +22,6 @@ Best regards
 
 @hmtkyn
 
-![Investor Ninja Strategy](https://tr.tradingview.com/i/rCl22iI3/ "Investor Ninja Strategy")
+![Investor Ninja Strategy](https://tradingview.com/i/rCl22iI3/ "Investor Ninja Strategy")
 
-<https://tr.tradingview.com/script/rCl22iI3/>
+<https://tradingview.com/script/rCl22iI3/>
